@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let input = document.getElementById("input");
     let submit = document.getElementById("submit");
     let item = document.getElementsByClassName("grid-item");
+    let count = 0;
 
     fetch(url)
         .then(response => response.json())
         .then(data => word = data)
-        .catch(error => console.error('Error:', error));
 
     show.addEventListener("click", function () {
         solution.innerText = word
@@ -21,11 +21,33 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("It is a word with 4 letters")
             input.value = ""
         }
-        if (word == input.value) {
-            let split_word = input.value.split('');
-            for (let i = 0; i < split_word.length; i++) {
-                item[i].innerText = split_word[i]
-            }
+        if (count === 0) {
+            evaluation(count)
+            count ++
+        } else if (count === 1) {
+            evaluation(count)
+            count ++
+        } else if (count === 2) {
+            evaluation(count)
+            count ++
+        } else {
+            evaluation(count)
+            count ++
         }
     });
+
+    function evaluation(num) {
+        let splitWord = input.value.split("");
+        let startIndex = num * 4;
+        if (word == input.value) {
+            for (let i = 0; i < splitWord.length; i++) {
+                item[startIndex + i].innerText = splitWord[i];
+            }
+        } else {
+            for (let i = 0; i < splitWord.length; i++) {
+                item[startIndex + i].innerText = splitWord[i];
+            }
+        }
+        input.value = "";
+    }
 });
