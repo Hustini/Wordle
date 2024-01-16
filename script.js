@@ -30,22 +30,43 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (count === 2) {
             evaluation(count)
             count ++
-        } else {
+        } else if (count === 3) {
             evaluation(count)
             count ++
+        } else if (count === 4) {
+            evaluation(count)
+            count ++
+        } else if (count === 5) {
+            evaluation(count)
+            if (word != input.value) {
+                alert(`You lost the word was ${word}`)
+            }
         }
     });
 
     function evaluation(num) {
-        let splitWord = input.value.split("");
+        let splitInput = input.value.split("");
+        let splitWord = word[0].split("");
         let startIndex = num * 4;
         if (word == input.value) {
-            for (let i = 0; i < splitWord.length; i++) {
-                item[startIndex + i].innerText = splitWord[i];
+            for (let i = 0; i < splitInput.length; i++) {
+                item[startIndex + i].innerText = splitInput[i];
+                item[startIndex + i].style.background = "green";
+                item[startIndex + i].style.color = "white";
             }
         } else {
-            for (let i = 0; i < splitWord.length; i++) {
-                item[startIndex + i].innerText = splitWord[i];
+            for (let i = 0; i < splitInput.length; i++) {
+                item[startIndex + i].innerText = splitInput[i];
+            }
+            for (let i = 0; i < splitInput.length; i++) {
+                if (splitWord.includes(splitInput[i]) && splitWord[i] === splitInput[i]) {
+                    item[startIndex + i].style.background = "green";
+                    item[startIndex + i].style.color = "white";
+                }
+                if (splitWord.includes(splitInput[i]) && splitWord[i] !== splitInput[i]) {
+                    item[startIndex + i].style.background = "orange";
+                    item[startIndex + i].style.color = "white";
+                }
             }
         }
         input.value = "";
