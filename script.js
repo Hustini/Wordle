@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let word;
     const url = "https://random-word-api.vercel.app/api?words=1&length=4";
     let input = document.getElementById("input");
-    let submit = document.getElementById("submit");
     let item = document.getElementsByClassName("grid-item");
     let count = 0;
 
@@ -16,30 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
         solution.innerText = word
     });
 
-    submit.addEventListener("click", function () {
-        if (input.value.length !== 4) {
-            alert("It is a word with 4 letters")
-            input.value = ""
-        }
-        if (count === 0) {
-            evaluation(count)
-            count ++
-        } else if (count === 1) {
-            evaluation(count)
-            count ++
-        } else if (count === 2) {
-            evaluation(count)
-            count ++
-        } else if (count === 3) {
-            evaluation(count)
-            count ++
-        } else if (count === 4) {
-            evaluation(count)
-            count ++
-        } else if (count === 5) {
-            evaluation(count)
-            if (word != input.value) {
-                alert(`You lost the word was ${word}`)
+    input.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+            if (input.value.length !== 4) {
+                alert("It is a word with 4 letters")
+                input.value = ""
+            }
+            if (count === 0) {
+                evaluation(count)
+                count ++
+            } else if (count === 1) {
+                evaluation(count)
+                count ++
+            } else if (count === 2) {
+                evaluation(count)
+                count ++
+            } else if (count === 3) {
+                evaluation(count)
+                count ++
+            } else if (count === 4) {
+                evaluation(count)
+                count ++
+            } else if (count === 5) {
+                evaluation(count)
+                if (word != input.value) {
+                    alert(`You lost the word was ${word}`)
+                }
             }
         }
     });
