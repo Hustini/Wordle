@@ -33,9 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 count ++
             } else if (count === 5) {
                 evaluation(count)
-                if (word != input.value) {
-                    alert(`You lost the word was ${word}`)
-                }
             }
         }
     });
@@ -62,6 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (splitWord.includes(splitInput[i]) && splitWord[i] !== splitInput[i]) {
                     item[startIndex + i].style.background = "orange";
                     item[startIndex + i].style.color = "white";
+                }
+                if (count === 5) {
+                    alert(`You lost the word was ${word}`)
+                    count++
                 }
             }
         }
