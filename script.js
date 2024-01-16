@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let show = document.getElementById("show");
-    let solution = document.getElementById("solution");
     let word;
     const url = "https://random-word-api.vercel.app/api?words=1&length=4";
     let input = document.getElementById("input");
@@ -10,10 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(url)
         .then(response => response.json())
         .then(data => word = data)
-
-    show.addEventListener("click", function () {
-        solution.innerText = word
-    });
+        .then(data => console.log(data))
 
     input.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
