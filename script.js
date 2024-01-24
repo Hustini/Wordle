@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 item[startIndex + i].innerText = splitInput[i];
                 item[startIndex + i].style.background = "green";
                 item[startIndex + i].style.color = "white";
+
             }
         } else {
             for (let i = 0; i < splitInput.length; i++) {
