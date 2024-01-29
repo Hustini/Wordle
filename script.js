@@ -39,16 +39,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    function deleteScreen() {
+        for (let i = 0; i < item.length; i++) {
+            item[i].style.display = "none";
+            title.style.display = "none";
+            input.style.display = "none";
+        }
+    }
+
     function evaluation(num) {
         let splitInput = input.value.split("");
         let splitWord = word[0].split("");
         let startIndex = num * 4;
         if (word == input.value) {
-            for (let i = 0; i < item.length; i++) {
-                item[i].style.display = "none";
-                title.style.display = "none";
-                input.style.display = "none";
-            }
+            deleteScreen()
             let endScreen = document.createElement("h2");
             endScreen.innerText = `Congratulations. The word was ${word}. If you want to play again, just reload the page`;
             endScreen.style.textAlign = "justify"
@@ -66,10 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     item[startIndex + i].style.background = "orange";
                     item[startIndex + i].style.color = "white";
                 }
-                if (count === 5) {
-                    alert(`You lost the word was ${word}`);
-                    count++;
-                }
+            }
+            if (count === 5) {
+                deleteScreen()
+                let endScreen = document.createElement("h2");
+                endScreen.innerText = `I'm sorry. The word was ${word}. If you want to play again, just reload the page`;
+                endScreen.style.textAlign = "justify"
+                playground.appendChild(endScreen);
             }
         }
         input.value = "";
