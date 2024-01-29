@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let input = document.getElementById("input");
     let item = document.getElementsByClassName("grid-item");
     let count = 0;
+    let title = document.getElementById("title");
+    let playground = document.getElementById("playground");
 
     fetch(url)
         .then(response => response.json())
@@ -13,26 +15,26 @@ document.addEventListener("DOMContentLoaded", function () {
     input.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
             if (input.value.length !== 4) {
-                alert("It is a word with 4 letters")
-                input.value = ""
+                alert("It is a word with 4 letters");
+                input.value = "";
             }
             if (count === 0) {
-                evaluation(count)
-                count ++
+                evaluation(count);
+                count ++;
             } else if (count === 1) {
-                evaluation(count)
-                count ++
+                evaluation(count);
+                count ++;
             } else if (count === 2) {
-                evaluation(count)
-                count ++
+                evaluation(count);
+                count ++;
             } else if (count === 3) {
-                evaluation(count)
-                count ++
+                evaluation(count);
+                count ++;
             } else if (count === 4) {
-                evaluation(count)
-                count ++
+                evaluation(count);
+                count ++;
             } else if (count === 5) {
-                evaluation(count)
+                evaluation(count);
             }
         }
     });
@@ -42,11 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
         let splitWord = word[0].split("");
         let startIndex = num * 4;
         if (word == input.value) {
-            for (let i = 0; i < splitInput.length; i++) {
-                item[startIndex + i].innerText = splitInput[i];
-                item[startIndex + i].style.background = "green";
-                item[startIndex + i].style.color = "white";
+            for (let i = 0; i < item.length; i++) {
+                item[i].style.display = "none";
+                title.style.display = "none";
+                input.style.display = "none";
             }
+            let endScreen = document.createElement("h2");
+            endScreen.innerText = `Congratulations. The word was ${word}. If you want to play again, just reload the page`;
+            endScreen.style.textAlign = "justify"
+            playground.appendChild(endScreen);
         } else {
             for (let i = 0; i < splitInput.length; i++) {
                 item[startIndex + i].innerText = splitInput[i];
@@ -61,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     item[startIndex + i].style.color = "white";
                 }
                 if (count === 5) {
-                    alert(`You lost the word was ${word}`)
-                    count++
+                    alert(`You lost the word was ${word}`);
+                    count++;
                 }
             }
         }
