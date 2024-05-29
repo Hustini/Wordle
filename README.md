@@ -1,11 +1,6 @@
 # Wordle
 
 ```
-Todo:
-- styling
-- start and end screen
-- deployment
-
 For the User:
 - the wrong letters wont be shown for now
 - this is uses a random word api so its possible
